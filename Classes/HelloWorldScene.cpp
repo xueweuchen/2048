@@ -11,18 +11,18 @@ USING_NS_CC;
 
 void HelloWorld::createCardSprite(cocos2d::Size size)
 {
-    int unitSize = (size.height)/5;
+	int unitSize = (size.height)/5;
 	int leftpadding = (size.width - size.height);
 
-    for (int i = 0; i < 4; ++i)
-    {
-        for (int j = 0; j < 4; ++j)
-        {
-            cardArr[j][i] = CardSprite::createCardSprite(0, unitSize, unitSize, 
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			cardArr[j][i] = CardSprite::createCardSprite(0, unitSize, unitSize, 
 				unitSize*i+leftpadding+size.height/10, unitSize*(3-j)+size.height/10);
-            this->addChild(cardArr[j][i]);
-        }
-    }
+			this->addChild(cardArr[j][i]);
+		}
+	}
 	randomCreateCard();
 	randomCreateCard();
 }
@@ -352,27 +352,27 @@ void HelloWorld::updateTotalScore()
 
 Scene* HelloWorld::createScene()
 {
-    // 'scene' is an autorelease object
-    auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
-    auto layer = HelloWorld::create();
+	// 'scene' is an autorelease object
+	auto scene = Scene::create();
 
-    // add layer as a child to scene
-    scene->addChild(layer);
+	// 'layer' is an autorelease object
+	auto layer = HelloWorld::create();
 
-    // return the scene
-    return scene;
+	// add layer as a child to scene
+	scene->addChild(layer);
+
+	// return the scene
+	return scene;
 }
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    if ( !Layer::init() )
-    {
-        return false;
-    }
-    
+	if ( !Layer::init() )
+	{
+		return false;
+	}
+
 	srand((unsigned)time(NULL));
 
 	auto touchListener = EventListenerTouchOneByOne::create();
@@ -383,10 +383,10 @@ bool HelloWorld::init()
 	keyListener->onKeyPressed = CC_CALLBACK_2(HelloWorld::onKeyPressed, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(keyListener, this);
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-    /////////////////////////////
+	/////////////////////////////
 	auto panelSprite = Sprite::create("panel.png");
 	panelSprite->setPosition(Point(visibleSize.width - visibleSize.height/2, visibleSize.height/2));
 	Size orignalPanelSize = panelSprite->getContentSize();
@@ -394,7 +394,7 @@ bool HelloWorld::init()
 	panelSprite->setScaleY(visibleSize.height*9.3/10/orignalPanelSize.height);
 	this->addChild(panelSprite);
 
-    createCardSprite(visibleSize);
+	createCardSprite(visibleSize);
 
 	// create menu, it's an autorelease object
 	auto menu = Menu::create();
@@ -468,13 +468,13 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
-    return;
+	return;
 #endif
 
-    Director::getInstance()->end();
+	Director::getInstance()->end();
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
+	exit(0);
 #endif
 }
 

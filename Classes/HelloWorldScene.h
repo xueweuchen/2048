@@ -9,18 +9,18 @@
 class HelloWorld : public cocos2d::Layer
 {
 public:
-    // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene();
-	
-    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    virtual bool init();  
-    
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
+	// there's no 'id' in cpp, so we recommend returning the class instance pointer
+	static cocos2d::Scene* createScene();
+
+	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+	virtual bool init();  
+
+	// a selector callback
+	void menuCloseCallback(cocos2d::Ref* pSender);
 	void restartCallback(cocos2d::Ref* pSender);
 	void leaderBoardCallback(cocos2d::Ref* pSender);
 	void optionCallback(cocos2d::Ref* pSender);
-    
+
 	// touch events
 	virtual bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *unused_event);
 	virtual void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *unused_event);
@@ -29,12 +29,12 @@ public:
 	bool moveDown();
 	bool moveLeft();
 	bool moveRight();
-	
+
 	void moveAction(int number, int fromx, int fromy, int destx, int desty);
 	// random create initial cards
 	void randomCreateCard();
 	// create cards
-    void createCardSprite(cocos2d::Size size);
+	void createCardSprite(cocos2d::Size size);
 	// check whether game ends or not
 	int checkGameOver();
 	void doGameOver(int winOrFail);
@@ -43,8 +43,8 @@ public:
 
 	// pop up fail layer
 	void popupLayout(int winOrFail);
-    // implement the "static create()" method manually
-    CREATE_FUNC(HelloWorld);
+	// implement the "static create()" method manually
+	CREATE_FUNC(HelloWorld);
 
 private:
 	CardSprite* cardArr[4][4];
